@@ -29,8 +29,10 @@ fn main() {
     let project: Project = from_reader(s.as_bytes()).unwrap();
     println!("{:#?}", project);
     let b = do_des("D:/xmlreader/src/file.xml");
-
-    println!("{:#?}", b);
+    match b {
+        Ok(v) => println!("working with version: {:?}", v),
+        Err(e) => println!("error parsing xml: {:?}", e),
+    };
 }
 
 #[derive(Debug, Deserialize)]
